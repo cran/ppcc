@@ -12,7 +12,7 @@ void ppcctest_weibull(double *p, double *ppcc, double *shape,
 		      int *n, int *nmc, double *pval)
 {
   double *res; 
-  int i , j, count;
+  int i , j;
   int mc = nmc[0];
   int nn = n[0];
   double *M, *qq, *r;

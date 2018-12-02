@@ -545,7 +545,7 @@ ppccTest <-
         } else if (shape > 0){
             alpha <- 4 / shape^2
             beta <- 1 / 2 * abs(shape)
-            q <- -alpha * beta * qgamma(pe, alpha, scale = beta)
+            q <- -alpha * beta + qgamma(pe, alpha, scale = beta)
         } else {
             alpha <- 4 / shape^2
             beta <- 1 / 2 * abs(shape)

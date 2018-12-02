@@ -4,9 +4,10 @@
 \alias{ppccTest}
 \title{Probability Plot Correlation Coefficient Test}
 \usage{
-ppccTest(x, qfn = c("qnorm", "qlnorm", "qunif", "qexp", "qcauchy", "qlogis",
-  "qgumbel", "qweibull", "qpearson3", "qgev", "qkappa2", "qrayleigh",
-  "qglogis"), shape = NULL, ppos = NULL, mc = 10000, ...)
+ppccTest(x, qfn = c("qnorm", "qlnorm", "qunif", "qexp", "qcauchy",
+  "qlogis", "qgumbel", "qweibull", "qpearson3", "qgev", "qkappa2",
+  "qrayleigh", "qglogis"), shape = NULL, ppos = NULL, mc = 10000,
+  ...)
 }
 \arguments{
 \item{x}{a numeric vector of data values; NA values will be silently ignored.}
@@ -262,12 +263,8 @@ Distribution, \emph{Water Resources Research} 27, 3149--3158.
 \code{\link{Logistic}}, \code{\link[VGAM]{qgumbel}}, \code{\link{Weibull}},
 \code{\link[VGAM]{qgev}}.
 }
-\concept{
-Goodness-of-Fit
-
-Composite Hypothesis Test
-
-Homogeinity test
-}
+\concept{Composite Hypothesis Test}
+\concept{Goodness-of-Fit}
+\concept{Homogeinity test}
 \keyword{htest}
 \keyword{npar}
