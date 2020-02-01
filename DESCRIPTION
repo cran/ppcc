@@ -1,7 +1,7 @@
 Type: Package
 Package: ppcc
-Version: 1.1
-Date: 2018-12-02
+Version: 1.2
+Date: 2020-02-01
 Title: Probability Plot Correlation Coefficient Test
 Author: Thorsten Pohlert
 Maintainer: Thorsten Pohlert <thorsten.pohlert@gmx.de>
@@ -19,8 +19,8 @@ Depends: R(>= 3.0.0)
 Suggests: VGAM (>= 1.0), nortest(>= 1.0)
 License: GPL-3
 NeedsCompilation: yes
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Classification/MSC-2010: 62G10
-Packaged: 2018-12-02 20:41:47 UTC; thorsten
+Packaged: 2020-02-01 20:20:54 UTC; thorsten
 Repository: CRAN
-Date/Publication: 2018-12-03 00:00:02 UTC
+Date/Publication: 2020-02-01 20:50:02 UTC

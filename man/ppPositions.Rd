@@ -4,8 +4,10 @@
 \alias{ppPositions}
 \title{Plotting Point Positions}
 \usage{
-ppPositions(n, method = c("Gringorton", "Cunane", "Filliben", "Blom",
-  "Weibull", "ppoints"))
+ppPositions(
+  n,
+  method = c("Gringorton", "Cunane", "Filliben", "Blom", "Weibull", "ppoints")
+)
 }
 \arguments{
 \item{n}{numeric, the sample size}

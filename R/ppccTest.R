@@ -1,7 +1,7 @@
 ##  File ppccTest.R
 ##  Part of the R package ppcc
 ##
-##  Copyright (C) 2017 Thorsten Pohlert
+##  Copyright (C) 2017-2020 Thorsten Pohlert
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -268,7 +268,7 @@
 #' @keywords htest
 #' @keywords npar
 #' 
-#' @useDynLib 'ppcc', .registration = TRUE
+#' @useDynLib 'ppcc', .registration = TRUE, .fixes = "C_"
 #'
 #' @export ppccTest
 #'
@@ -308,12 +308,12 @@ ppccTest <-
         q <- as.double(q)
         n <- as.integer(n)
         res <- as.double(1.0)
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n, res = res)$res
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n, res = res)$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
         pval <- as.double(1.0)
         pe <- as.double(pe)
-        PVALUE <- .C("ppcctest_norm", p = pe, ppcc = r, n = n, nmc = mc,
+        PVALUE <- .C(C_ppcctest_norm, p = pe, ppcc = r, n = n, nmc = mc,
                      pval = pval)$pval
 
      ##   if (ppos == "Blom"){
@@ -341,14 +341,14 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
 
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
         pval <- as.double(1.0)
         pe <- as.double(pe)
         
-        PVALUE <- .C("ppcctest_lnorm", p = pe, ppcc = r, n = n, nmc = mc,
+        PVALUE <- .C(C_ppcctest_lnorm, p = pe, ppcc = r, n = n, nmc = mc,
                      pval = pval )$pval
         ESTIMATE <- NULL
     } else if (qfn == "qunif"){
@@ -372,14 +372,14 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
         pval <- as.double(1.0)
         pe <- as.double(pe)
  
-        PVALUE <- .C("ppcctest_unif", p = pe, ppcc = r, n = n, nmc = mc,
+        PVALUE <- .C(C_ppcctest_unif, p = pe, ppcc = r, n = n, nmc = mc,
                      pval = pval )$pval
         ESTIMATE <- NULL
     
@@ -400,14 +400,14 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
         pval <- as.double(1.0)
         pe <- as.double(pe)
  
-        PVALUE <- .C("ppcctest_rayleigh", p = pe, ppcc = r, n = n, nmc = mc,
+        PVALUE <- .C(C_ppcctest_rayleigh, p = pe, ppcc = r, n = n, nmc = mc,
                      pval = pval )$pval
         ESTIMATE <- NULL
     
@@ -428,14 +428,14 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
         pval <- as.double(1.0)
         pe <- as.double(pe)
  
-        PVALUE <- .C("ppcctest_exp", p = pe, ppcc = r, n = n, nmc = mc,
+        PVALUE <- .C(C_ppcctest_exp, p = pe, ppcc = r, n = n, nmc = mc,
                      pval = pval )$pval
         ESTIMATE <- NULL
 
@@ -456,14 +456,14 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
         pval <- as.double(1.0)
         pe <- as.double(pe)
  
-        PVALUE <- .C("ppcctest_logis", p = pe, ppcc = r, n = n, nmc = mc,
+        PVALUE <- .C(C_ppcctest_logis, p = pe, ppcc = r, n = n, nmc = mc,
                      pval = pval )$pval
         ESTIMATE <- NULL
         
@@ -484,14 +484,14 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
         pval <- as.double(1.0)
         pe <- as.double(pe)
  
-        PVALUE <- .C("ppcctest_cauchy", p = pe, ppcc = r, n = n, nmc = mc,
+        PVALUE <- .C(C_ppcctest_cauchy, p = pe, ppcc = r, n = n, nmc = mc,
                      pval = pval )$pval
               ESTIMATE <- NULL
 
@@ -512,14 +512,14 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
         pval <- as.double(1.0)
         pe <- as.double(pe)
  
-        PVALUE <- .C("ppcctest_gumbel", p = pe, ppcc = r, n = n, nmc = mc,
+        PVALUE <- .C(C_ppcctest_gumbel, p = pe, ppcc = r, n = n, nmc = mc,
                      pval = pval )$pval
         ESTIMATE <- NULL
         
@@ -561,7 +561,7 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
@@ -569,10 +569,10 @@ ppccTest <-
         pe <- as.double(pe)
         shape <- as.double(shape)
         if (shape == 0){
-            PVALUE <- .C("ppcctest_norm", p = pe, ppcc = r, n = n, nmc = mc,
+            PVALUE <- .C(C_ppcctest_norm, p = pe, ppcc = r, n = n, nmc = mc,
                          pval = pval )$pval
         } else {
-            PVALUE <- .C("ppcctest_pearson3", p = pe, ppcc = r, shape = shape,
+            PVALUE <- .C(C_ppcctest_pearson3, p = pe, ppcc = r, shape = shape,
                          sn = n, nmc = mc, pval = pval )$pval
         }
         ESTIMATE <- NULL
@@ -603,14 +603,14 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
         pval <- as.double(1.0)
         pe <- as.double(pe)
         shape <- as.double(shape)
-        PVALUE <- .C("ppcctest_weibull", p = pe, ppcc = r, shape = shape,
+        PVALUE <- .C(C_ppcctest_weibull, p = pe, ppcc = r, shape = shape,
                      sn = n, nmc = mc, pval = pval )$pval
         ESTIMATE <- NULL
         
@@ -645,7 +645,7 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
@@ -653,10 +653,10 @@ ppccTest <-
         pe <- as.double(pe)
         shape <- as.double(shape)
         if (shape == 0){
-            PVALUE <- .C("ppcctest_gumbel", p = pe, ppcc = r,
+            PVALUE <- .C(C_ppcctest_gumbel, p = pe, ppcc = r,
                          sn = n, nmc = mc, pval = pval )$pval
         } else {
-            PVALUE <- .C("ppcctest_gev", p = pe, ppcc = r, shape = shape,
+            PVALUE <- .C(C_ppcctest_gev, p = pe, ppcc = r, shape = shape,
                          sn = n, nmc = mc, pval = pval )$pval
         }
         ESTIMATE <- NULL
@@ -693,7 +693,7 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
@@ -701,10 +701,10 @@ ppccTest <-
         pe <- as.double(pe)
         shape <- as.double(shape)
         if (shape == 0){
-            PVALUE <- .C("ppcctest_logis", p = pe, ppcc = r,
+            PVALUE <- .C(C_ppcctest_logis, p = pe, ppcc = r,
                          sn = n, nmc = mc, pval = pval )$pval
         } else {
-            PVALUE <- .C("ppcctest_glogis", p = pe, ppcc = r, shape = shape,
+            PVALUE <- .C(C_ppcctest_glogis, p = pe, ppcc = r, shape = shape,
                          sn = n, nmc = mc, pval = pval )$pval
         }
         ESTIMATE <- NULL
@@ -739,7 +739,7 @@ ppccTest <-
         n <- as.integer(n)
         res <- as.double(1.0)
         
-        STATISTIC <- .C("pmcor", x = qe, y = q, n = n,
+        STATISTIC <- .C(C_pmcor, x = qe, y = q, n = n,
                         res = res )$res
         r <- as.double(STATISTIC)
         mc <- as.integer(mc)
@@ -747,7 +747,7 @@ ppccTest <-
         pe <- as.double(pe)
         shape <- as.double(shape)
         
-        PVALUE <- .C("ppcctest_kappa2", p = pe, ppcc = r, shape = shape,
+        PVALUE <- .C(C_ppcctest_kappa2, p = pe, ppcc = r, shape = shape,
                      sn = n, nmc = mc, pval = pval )$pval     
         ESTIMATE <- NULL
     }
